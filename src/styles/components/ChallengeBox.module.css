@@ -104,4 +104,14 @@
     .challengeBoxContainer {
         margin: 2rem 0 2rem 0;
     }
+    .challengeActive main img {
+        width: 100px;
+        height: 82px;
+    }
+    .challengeActive header {
+        border-bottom: none;
+    }
+    .challengeActive footer {
+        margin-top: 1rem;
+    }
 }
