@@ -58,5 +58,25 @@
     "type": "body",
     "description": "Em pé, gire a cintura o máximo que puder para a esquerda, segure por cinco segundos. Repita para a direita.",
     "amount": 90
+  },
+  {
+    "type": "body",
+    "description": "Gire os tornozelos em ambas as direções (direita e esquerda) por cerca de cinco segundos.",
+    "amount": 100
+  },
+  {
+    "type": "body",
+    "description": "Apoie a mão na mesa (esticando os braços), mantendo o tronco reto. As orelhas devem ficar entre os braços. Mantenha a posição por cerca de 20 segundos.",
+    "amount": 60
+  },
+  {
+    "type": "body",
+    "description": "Mexa cada um dos seus dedos com cuidado: estenda-os, flexione-os, abra-os e feche-os.",
+    "amount": 120
+  },
+  {
+    "type": "body",
+    "description": "Tente pegar no pé da própria cadeira, alongando a lombar.",
+    "amount": 70
   }
 ]
