@@ -6,7 +6,7 @@ export default function main() {
     <div className={styles.container}>
       <section>
         <div>
-          <img className={styles.officeLogo} src="office.png" alt="icone" />
+          <img className={styles.officeLogo} src="exercicios-sem-fundo.png" alt="icone" />
         </div>
         <div>
           <Login />

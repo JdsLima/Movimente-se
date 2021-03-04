@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
 
 .LoginContainer {
     width: 100%;
@@ -16,10 +16,21 @@
     color: var(--white);
 }
 
-.LoginContainer p {
+.LoginContainer h1 {
+    font-weight: bold;
     line-height: 1.4;
     max-width: 70%;
     margin-top: 3rem;
+    color: var(--white);
+}
+
+.welcome p {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400 !important;
+    text-align: justify;
+    line-height: 1;
+    max-width: 60%;
+    margin-top: 2rem;
     color: var(--white);
 }
 
@@ -30,11 +41,16 @@
     align-content: center;
 }
 
+.logo img {
+    width: 4.2rem;
+    height: 4rem;
+}
+
 .logo strong {
     font-family: 'Roboto', sans-serif;
     font-style: italic;
     font-size: 1.5rem;
-    margin-left: 1rem;
+    margin-left: 0.5rem;
     line-height: 1.4;
 }
 
@@ -70,7 +86,7 @@
 
 .inputContainer input {
     color: var(--white);
-    background: linear-gradient(to right, var(--blue-dark), var(--blue));
+    background: linear-gradient(to right, #868ee2, var(--blue));
     padding: 1rem;
     border: 0;
     border-radius: 5px 0 0 5px;
@@ -98,6 +114,12 @@
     }
     .inputContainer {
        width: auto;
+    }
+    .welcome p {
+        max-width: 100%;
+    }
+    .inputContainer input {
+        background: linear-gradient(to right, var(--blue), var(--blue-dark));
     }
 }
 

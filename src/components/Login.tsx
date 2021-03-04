@@ -23,7 +23,13 @@ export function Login() {
                     <img src="favicon-sem-fundo.png" alt="" />
                     <strong>Movimente<span>-</span>se</strong>
                 </div>
-                <p>Bem-vindo</p>
+                <h1>Bem-vindo!</h1>
+                <div className={styles.welcome}>
+                    <p>
+                        Nosso objetivo é ajudar pessoas que ficam grandes períodos
+                        de tempo em frente ao computador.
+                    </p>
+                </div>
                 <div className={styles.msg}>
                     <img src="/icons/GitHub.png" alt="Github" />
                     <strong>Faça login com seu Github para começar.</strong>
