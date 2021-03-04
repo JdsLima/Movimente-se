@@ -40,6 +40,9 @@
     .officeLogo {
         display: none;
     }
+    .container section a  {
+        display: none;
+    }
 }
 @media(max-width: 960px){
     .officeLogo {
