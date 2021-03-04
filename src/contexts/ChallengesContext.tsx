@@ -11,6 +11,7 @@ interface Challenge {
 
 interface ChallengesContextData {
     level: number;
+    user: string;
     currentExperience: number;
     challengesCompleted: number;
     experienceToNextLevel: number;
@@ -39,6 +40,13 @@ export function ChallengesProvider({ children, ...rest }: ChallengesProviderProp
     const [activeChallenge, setActiveChallenge] = useState(null);
     const experienceToNextLevel = Math.pow((level + 1) * 5, 2);
     const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false);
+
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        let myUser = Cookies.get("User");
+        setUser(myUser);
+    }, [user]);
 
     useEffect(() => {
         Notification.requestPermission();
@@ -101,7 +109,7 @@ export function ChallengesProvider({ children, ...rest }: ChallengesProviderProp
             {
                 level, currentExperience, challengesCompleted,
                 levelUp, startNewChallenge, activeChallenge, resetChallenge,
-                experienceToNextLevel, completeChallenge, closeLevelUpModal
+                experienceToNextLevel, completeChallenge, closeLevelUpModal, user
             }}>
             {children}
 

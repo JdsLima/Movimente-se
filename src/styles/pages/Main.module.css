@@ -1,0 +1,49 @@
+.container {
+    height: 100vh;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to right, var(--blue-dark), var(--blue), var(--blue-dark));
+}
+
+.container section {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-content: center;
+}
+
+.officeLogo {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+@media(max-width: 600px) {
+    .container section {
+        display: block;
+        margin-top: 3.5rem;
+    }
+    .officeLogo {
+        display: none;
+    }
+}
+@media(max-width: 960px){
+    .officeLogo {
+        width: 556px;
+    }
+}
+@media(max-width: 1280px){
+    .officeLogo {
+        width: 633px;
+    }
+}
+
+@media(max-width: 768px){
+    .officeLogo {
+        height: 90%;
+        width: 384px;
+    }
+}
