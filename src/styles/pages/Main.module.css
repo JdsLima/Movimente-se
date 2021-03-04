@@ -15,6 +15,13 @@
     align-content: center;
 }
 
+.container section a {
+    margin-left: 6rem;
+    font-family:cursive;
+    color: #838282;
+    filter: brightness(0.99);
+}
+
 .officeLogo {
     height: 100%;
     width: 50rem;
