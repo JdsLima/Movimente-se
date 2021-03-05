@@ -36,6 +36,7 @@
     }
     .container {
         background: linear-gradient(to right, var(--blue-dark),var(--blue));
+        min-height: 100vh;
     }
     .officeLogo {
         display: none;
