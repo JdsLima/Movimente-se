@@ -42,8 +42,8 @@
 }
 
 .logo img {
-    width: 4.2rem;
-    height: 4rem;
+    width: auto;
+    height: auto;
 }
 
 .logo strong {
@@ -92,6 +92,11 @@
     border-radius: 5px 0 0 5px;
 }
 
+.inputContainer input:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
 .inputContainer input::placeholder {
     color: var(--gray-line);
     filter: brightness(0.9);
@@ -101,11 +106,19 @@
     width: 4rem;
     border: 0;
     border-radius: 0 5px 5px 0;
-    background: var(--blue-dark);
     transition: linear 0.2s;
 }
-.inputContainer button:hover {
+
+.inputContainer button:disabled {
+    background: var(--blue-dark);
+}
+
+.inputContainer button:enabled {
     background: var(--green);
+}
+
+.inputContainer button:focus {
+    outline: none;
 }
 
 @media(max-width: 600px) {

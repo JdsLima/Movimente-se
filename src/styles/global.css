@@ -55,3 +55,8 @@ a{
     text-decoration: none;
 }
 
+@media(max-width: 600px) {
+    body {
+        background: linear-gradient(to right, var(--blue), var(--blue-dark));
+    }
+}

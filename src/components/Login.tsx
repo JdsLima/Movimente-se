@@ -2,15 +2,27 @@ import Link from 'next/link';
 import Cookies from 'js-cookie';
 import styles from '../styles/components/Login.module.css';
 import Head from 'next/head';
+import { useEffect, useState } from 'react';
 
 export function Login() {
+    const [isDesabled, setIsDesabled] = useState(true);
+    const [inputContent, setInputContent] = useState(null);
+
+    function defInputContent() {
+        setInputContent((document.getElementById('userName') as HTMLInputElement).value);
+    }
+
+    useEffect(() => {
+        if ((document.getElementById('userName') as HTMLInputElement).value.length > 0) {
+            setIsDesabled(false);
+        } else {
+            setIsDesabled(true);
+        }
+    }, [inputContent]);
+
     function getUser() {
         const user = (document.getElementById('userName') as HTMLInputElement).value;
-        if (user == '' || user == null) {
-            alert("Usuario vazio");
-        } else {
-            Cookies.set('User', user.toString());
-        }
+        Cookies.set('User', String(user));
     }
 
     return (
@@ -20,7 +32,7 @@ export function Login() {
             </Head>
             <div className={styles.LoginContainer}>
                 <div className={styles.logo}>
-                    <img src="favicon-sem-fundo.png" alt="" />
+                    <img draggable="false" src="favicon-sem-fundo.png" alt="logo" />
                     <strong>Movimente<span>-</span>se</strong>
                 </div>
                 <h1>Bem-vindo!</h1>
@@ -31,13 +43,13 @@ export function Login() {
                     </p>
                 </div>
                 <div className={styles.msg}>
-                    <img src="/icons/GitHub.png" alt="Github" />
+                    <img draggable="false" src="/icons/GitHub.png" alt="Github" />
                     <strong>Faça login com seu Github para começar.</strong>
                 </div>
                 <div className={styles.inputContainer}>
-                    <input type="text" id="userName" placeholder="Digite seu username" />
+                    <input type="text" autoComplete="off" onChange={defInputContent} id="userName" placeholder="Digite seu username" />
                     <Link href="/inicio">
-                        <button type='button' id="botaoUser" onClick={getUser}>
+                        <button type='button' id="botaoUser" disabled={isDesabled} onClick={getUser}>
                             <img src="icons/seta-direita.png" alt="avançar" />
                         </button>
                     </Link>
