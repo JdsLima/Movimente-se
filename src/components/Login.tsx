@@ -9,7 +9,9 @@ export function Login() {
     const [inputContent, setInputContent] = useState(null);
 
     function defInputContent() {
-        setInputContent((document.getElementById('userName') as HTMLInputElement).value);
+        setInputContent(
+            (document.getElementById('userName') as HTMLInputElement).value
+        );
     }
 
     useEffect(() => {
@@ -21,8 +23,8 @@ export function Login() {
     }, [inputContent]);
 
     function getUser() {
-        const user = (document.getElementById('userName') as HTMLInputElement).value;
-        Cookies.set('User', String(user));
+        if (Cookies.get("User") != inputContent)
+            Cookies.set('User', String(inputContent));
     }
 
     return (
@@ -32,7 +34,7 @@ export function Login() {
             </Head>
             <div className={styles.LoginContainer}>
                 <div className={styles.logo}>
-                    <img draggable="false" src="favicon-sem-fundo.png" alt="logo" />
+                    <img draggable="false" src="favicon.svg" alt="logo" />
                     <strong>Movimente<span>-</span>se</strong>
                 </div>
                 <h1>Bem-vindo!</h1>
@@ -47,9 +49,19 @@ export function Login() {
                     <strong>Faça login com seu Github para começar.</strong>
                 </div>
                 <div className={styles.inputContainer}>
-                    <input type="text" autoComplete="off" onChange={defInputContent} id="userName" placeholder="Digite seu username" />
+                    <input
+                        type="text"
+                        autoComplete="off"
+                        onChange={defInputContent}
+                        id="userName"
+                        placeholder="Username do GitHub"
+                    />
                     <Link href="/inicio">
-                        <button type='button' id="botaoUser" disabled={isDesabled} onClick={getUser}>
+                        <button type='button'
+                            id="botaoUser"
+                            disabled={isDesabled}
+                            onClick={getUser}
+                        >
                             <img src="icons/seta-direita.png" alt="avançar" />
                         </button>
                     </Link>

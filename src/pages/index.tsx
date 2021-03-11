@@ -7,7 +7,7 @@ export default function main() {
       <section>
         <div>
           <img draggable="false" className={styles.officeLogo} src="exercicios-sem-fundo.png" alt="icone" />
-          <span></span><a href="http://www.freepik.com">Arte por vectorjuice / Freepik</a>
+          <a href="http://www.freepik.com">Arte por vectorjuice / Freepik</a>
         </div>
         <div>
           <Login />

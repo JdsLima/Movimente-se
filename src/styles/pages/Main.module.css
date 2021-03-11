@@ -16,6 +16,7 @@
 }
 
 .container section a {
+    font-size: small;
     margin-left: 6rem;
     font-family:cursive;
     color: #838282;
@@ -23,8 +24,9 @@
 }
 
 .officeLogo {
+    padding: 2rem 2rem 0 2rem;
     height: 100%;
-    width: 50rem;
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -45,20 +47,9 @@
         display: none;
     }
 }
-@media(max-width: 960px){
+ @media(max-width: 960px){
     .officeLogo {
-        width: 556px;
-    }
-}
-@media(max-width: 1280px){
-    .officeLogo {
-        width: 633px;
+        height: 70%;
     }
 }
 
-@media(max-width: 768px){
-    .officeLogo {
-        height: 90%;
-        width: 384px;
-    }
-}

@@ -42,8 +42,8 @@
 }
 
 .logo img {
-    width: auto;
-    height: auto;
+    width: 3rem;
+    height: 3rem;
 }
 
 .logo strong {
@@ -139,6 +139,9 @@
 @media(max-width: 280px){
     .inputContainer {
         height: 40px;
+    }
+    .inputContainer input {
+        width: 95%;
     }
     .inputContainer button {
         width: 32px;
