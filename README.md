@@ -21,7 +21,7 @@ As seguintes ferramentas foram utilizadas na construção do projeto:
 ### Autor
 ---
 
- <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/56857333?v=4" width="100px;" alt=""/>
+ <img style="border-radius: 20px;" src="https://avatars.githubusercontent.com/u/56857333?v=4" width="100px;" alt=""/>
  <sub>Jadson Lima</sub>
  
 Feito por Jadson Lima 👋🏽 Entre em contato!
