@@ -1,6 +1,4 @@
-
-<h1 align="center">Movimente-se</h1>
-<p align="center">Sistema iniciado durante o NLW#04 da rocketseat.</p>
+<p align="center"><img src="public/logo.png" height="auto" width="200" alt="logo"/></p>
 <p align="center">O sistema foi pensado para ajudar pessoas que ficam por longos períodos de tempo em frente ao computador.</p>
 <p>
 <h3> 🛠 Tecnologias</h3>
