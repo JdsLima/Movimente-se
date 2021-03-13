@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Cookies from 'js-cookie';
 import styles from '../styles/components/Login.module.css';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
@@ -23,8 +22,8 @@ export function Login() {
     }, [inputContent]);
 
     function getUser() {
-        if (Cookies.get("User") != inputContent)
-            Cookies.set('User', String(inputContent));
+        if (localStorage.getItem("User") != inputContent)
+            localStorage.setItem('User', String(inputContent));
     }
 
     return (

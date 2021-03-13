@@ -33,18 +33,21 @@ interface ChallengesProviderProps {
 export const ChallengesContext = createContext({} as ChallengesContextData);
 
 export function ChallengesProvider({ children, ...rest }: ChallengesProviderProps) {
-    const [level, setLevel] = useState(rest.level ?? 1);
-    const [currentExperience, setCurrentExperience] = useState(rest.currentExperience ?? 0);
-    const [challengesCompleted, setChallengesCompleted] = useState(rest.challengesCompleted ?? 0);
+    const [level, setLevel] = useState(rest.level ??
+        Number(localStorage.getItem('mylevel')));
+    const [currentExperience, setCurrentExperience] = useState(rest.currentExperience ??
+        Number(localStorage.getItem('currentExperience')));
+    const [challengesCompleted, setChallengesCompleted] = useState(rest.challengesCompleted ??
+        Number(localStorage.getItem('challengesCompleted')));
 
     const [activeChallenge, setActiveChallenge] = useState(null);
     const experienceToNextLevel = Math.pow((level + 1) * 5, 2);
     const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false);
 
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState('');
 
     useEffect(() => {
-        let myUser = Cookies.get("User");
+        let myUser = localStorage.getItem("User");
         setUser(myUser);
     }, [user]);
 
@@ -53,13 +56,17 @@ export function ChallengesProvider({ children, ...rest }: ChallengesProviderProp
     }, []);
 
     useEffect(() => {
-        Cookies.set('level', level.toString());
-        Cookies.set('currentExperience', currentExperience.toString());
-        Cookies.set('challengesCompleted', challengesCompleted.toString());
+        Cookies.set('level',
+            String(localStorage.getItem('mylevel')));
+        Cookies.set('currentExperience',
+            String(localStorage.getItem('currentExperience')));
+        Cookies.set('challengesCompleted',
+            String(localStorage.getItem('challengesCompleted')));
     }, [level, currentExperience, challengesCompleted]);
 
     function levelUp() {
         setLevel(level + 1);
+        localStorage.setItem('mylevel', String(level + 1));
         setIsLevelUpModalOpen(true);
     }
 
@@ -100,8 +107,10 @@ export function ChallengesProvider({ children, ...rest }: ChallengesProviderProp
             levelUp();
         }
         setCurrentExperience(finalExperience);
+        localStorage.setItem('currentExperience', String(finalExperience));
         setActiveChallenge(null);
         setChallengesCompleted(challengesCompleted + 1);
+        localStorage.setItem('challengesCompleted', String(challengesCompleted + 1));
     }
 
     return (
