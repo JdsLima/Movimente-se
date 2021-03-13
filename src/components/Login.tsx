@@ -22,8 +22,8 @@ export function Login() {
     }, [inputContent]);
 
     function getUser() {
-        if (localStorage.getItem("User") != inputContent)
-            localStorage.setItem('User', String(inputContent));
+        if (localStorage.getItem("@Movimente-se/User") != inputContent)
+            localStorage.setItem('@Movimente-se/User', String(inputContent));
     }
 
     return (

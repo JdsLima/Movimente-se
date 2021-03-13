@@ -34,11 +34,11 @@ export const ChallengesContext = createContext({} as ChallengesContextData);
 
 export function ChallengesProvider({ children, ...rest }: ChallengesProviderProps) {
     const [level, setLevel] = useState(rest.level ??
-        Number(localStorage.getItem('mylevel')));
+        Number(localStorage.getItem('@Movimente-se/level')));
     const [currentExperience, setCurrentExperience] = useState(rest.currentExperience ??
-        Number(localStorage.getItem('currentExperience')));
+        Number(localStorage.getItem('@Movimente-se/currentExperience')));
     const [challengesCompleted, setChallengesCompleted] = useState(rest.challengesCompleted ??
-        Number(localStorage.getItem('challengesCompleted')));
+        Number(localStorage.getItem('@Movimente-se/challengesCompleted')));
 
     const [activeChallenge, setActiveChallenge] = useState(null);
     const experienceToNextLevel = Math.pow((level + 1) * 5, 2);
@@ -47,7 +47,7 @@ export function ChallengesProvider({ children, ...rest }: ChallengesProviderProp
     const [user, setUser] = useState('');
 
     useEffect(() => {
-        let myUser = localStorage.getItem("User");
+        let myUser = localStorage.getItem("@Movimente-se/User");
         setUser(myUser);
     }, [user]);
 
@@ -57,16 +57,16 @@ export function ChallengesProvider({ children, ...rest }: ChallengesProviderProp
 
     useEffect(() => {
         Cookies.set('level',
-            String(localStorage.getItem('mylevel')));
+            String(localStorage.getItem('@Movimente-se/level')));
         Cookies.set('currentExperience',
-            String(localStorage.getItem('currentExperience')));
+            String(localStorage.getItem('@Movimente-se/currentExperience')));
         Cookies.set('challengesCompleted',
-            String(localStorage.getItem('challengesCompleted')));
+            String(localStorage.getItem('@Movimente-se/challengesCompleted')));
     }, [level, currentExperience, challengesCompleted]);
 
     function levelUp() {
         setLevel(level + 1);
-        localStorage.setItem('mylevel', String(level + 1));
+        localStorage.setItem('@Movimente-se/level', String(level + 1));
         setIsLevelUpModalOpen(true);
     }
 
@@ -107,10 +107,10 @@ export function ChallengesProvider({ children, ...rest }: ChallengesProviderProp
             levelUp();
         }
         setCurrentExperience(finalExperience);
-        localStorage.setItem('currentExperience', String(finalExperience));
+        localStorage.setItem('@Movimente-se/currentExperience', String(finalExperience));
         setActiveChallenge(null);
         setChallengesCompleted(challengesCompleted + 1);
-        localStorage.setItem('challengesCompleted', String(challengesCompleted + 1));
+        localStorage.setItem('@Movimente-se/challengesCompleted', String(challengesCompleted + 1));
     }
 
     return (
