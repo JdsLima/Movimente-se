@@ -2,6 +2,7 @@ import { createContext, ReactNode, useContext, useEffect, useState } from "react
 import { ChallengesContext } from "./ChallengesContext";
 
 let countdownTimeout: NodeJS.Timeout;
+let distance: number;
 
 interface CountdownContextData {
     minutes: number;
@@ -21,35 +22,48 @@ export const CountdownContext = createContext({} as CountdownContextData);
 export function CountdownProvider({ children }: CountdownProviderProps) {
     const { startNewChallenge } = useContext(ChallengesContext);
 
-    const [time, setTime] = useState(50 * 60);
     const [isActive, setIsActive] = useState(false);
+    const [isFinalized, setIsFinalized] = useState(true);
     const [hasFinished, setHasFinished] = useState(false);
+    const [countDownDate, setCountDownData] = useState(0);
 
-    const minutes = Math.floor(time / 60);
-    const seconds = time % 60;
+    const time = 50.0167; //minutes + 1 second
+    const [minutes, setMinutes] = useState(Math.floor(time));
+    const [seconds, setSeconds] = useState(0);
+
 
     function startCountdown() {
         setIsActive(true);
+        setIsFinalized(false);
+        setCountDownData(+new Date().getTime() + time * 60000);
     }
 
     function resetCountdown() {
-        clearTimeout(countdownTimeout);
+        clearInterval(countdownTimeout);
         setIsActive(false);
+        setIsFinalized(true);
         setHasFinished(false);
-        setTime(50 * 60);
     }
 
     useEffect(() => {
-        if (isActive && time > 0) {
-            countdownTimeout = setTimeout(() => {
-                setTime(time - 1);
-            }, 1000)
-        } else if (isActive && time === 0) {
+        if (isActive && minutes >= 0) {
+            countdownTimeout = setInterval(() => {
+                distance = countDownDate - +new Date();
+                setMinutes(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
+                setSeconds(Math.floor((distance % (1000 * 60)) / 1000));
+                if (distance < 0) {
+                    clearInterval(countdownTimeout);
+                    setIsFinalized(true);
+                    setMinutes(Math.floor(time));
+                    setSeconds(0);
+                }
+            }, 1000);
+        } else if (isActive && minutes < 0) {
             setHasFinished(true);
             setIsActive(false);
             startNewChallenge();
         }
-    }, [isActive, time])
+    }, [isActive, !isFinalized])
 
     return (
         <CountdownContext.Provider value={{
