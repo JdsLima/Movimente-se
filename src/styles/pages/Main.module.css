@@ -4,7 +4,6 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(to right, var(--blue-light), var(--blue));
 }
 
 .container section {
@@ -13,6 +12,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 2.5rem;
     align-content: center;
+    background: linear-gradient(to right, var(--blue-light), var(--blue));
 }
 
 .container section a {
