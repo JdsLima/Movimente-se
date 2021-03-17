@@ -43,6 +43,8 @@ export function CountdownProvider({ children }: CountdownProviderProps) {
         setIsActive(false);
         setIsFinalized(true);
         setHasFinished(false);
+        setMinutes(Math.floor(time));
+        setSeconds(0);
     }
 
     useEffect(() => {
