@@ -4,13 +4,14 @@
     box-sizing: border-box;
 }
 
-:root {
+html {
     --white:#fff;
-    --background:#f2f3f5;
+    --background:#12121d;
+    --secundary: #202031;
     --gray-line:#dcdde0;
-    --text:#666666;
+    --text:#d8d8d8;
     --text-highlight:#b3b9ff;
-    --title:#2e384d;
+    --title:#89a2d6;
     --red:#e83f5b;
     --green:#4cd62b;
     --blue:#5965e0;
