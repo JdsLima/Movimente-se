@@ -35,7 +35,7 @@ export function CountdownProvider({ children }: CountdownProviderProps) {
     function startCountdown() {
         setIsActive(true);
         setIsFinalized(false);
-        setCountDownData(+new Date().getTime() + time * 60000);
+        setCountDownData(+new Date().getTime() + (time * 60000));
     }
 
     function resetCountdown() {

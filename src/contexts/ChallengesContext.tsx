@@ -1,7 +1,7 @@
 import { createContext, useState, ReactNode, useEffect } from 'react';
-import Cookies from 'js-cookie';
 import challenges from '../../challenges.json';
 import { LevelUpModal } from '../components/LevelUpModal';
+import api from '../services/api';
 
 interface Challenge {
     type: 'body' | 'eye';
@@ -10,8 +10,8 @@ interface Challenge {
 }
 
 interface ChallengesContextData {
+    userName: string;
     level: number;
-    user: string;
     currentExperience: number;
     challengesCompleted: number;
     experienceToNextLevel: number;
@@ -25,6 +25,7 @@ interface ChallengesContextData {
 
 interface ChallengesProviderProps {
     children: ReactNode;
+    userName: string;
     level: number;
     currentExperience: number;
     challengesCompleted: number;
@@ -33,40 +34,45 @@ interface ChallengesProviderProps {
 export const ChallengesContext = createContext({} as ChallengesContextData);
 
 export function ChallengesProvider({ children, ...rest }: ChallengesProviderProps) {
-    const [level, setLevel] = useState(rest.level ??
-        Number(localStorage.getItem('@Movimente-se/level')));
-    const [currentExperience, setCurrentExperience] = useState(rest.currentExperience ??
-        Number(localStorage.getItem('@Movimente-se/currentExperience')));
-    const [challengesCompleted, setChallengesCompleted] = useState(rest.challengesCompleted ??
-        Number(localStorage.getItem('@Movimente-se/challengesCompleted')));
+    const userName = rest.userName;
+    const [level, setLevel] = useState(rest.level ?? 1);
+    const [currentExperience, setCurrentExperience] = useState(rest.currentExperience ?? 0);
+    const [challengesCompleted, setChallengesCompleted] = useState(rest.challengesCompleted ?? 0);
 
     const [activeChallenge, setActiveChallenge] = useState(null);
     const experienceToNextLevel = Math.pow((level + 1) * 5, 2);
     const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false);
 
-    const [user, setUser] = useState('');
+    async function updateLevel() {
+        await api.put(`update/${userName}_level_${level}`);
+    }
 
-    useEffect(() => {
-        let myUser = localStorage.getItem("@Movimente-se/User");
-        setUser(myUser);
-    }, [user]);
+    async function updateCurrentExperience() {
+        await api.put(`update/${userName}_currentExperience_${currentExperience}`);
+    }
+
+    async function updateChallengesCompleted() {
+        await api.put(`update/${userName}_challengesCompleted_${challengesCompleted}`);
+    }
 
     useEffect(() => {
         Notification.requestPermission();
     }, []);
 
     useEffect(() => {
-        Cookies.set('level',
-            String(localStorage.getItem('@Movimente-se/level')));
-        Cookies.set('currentExperience',
-            String(localStorage.getItem('@Movimente-se/currentExperience')));
-        Cookies.set('challengesCompleted',
-            String(localStorage.getItem('@Movimente-se/challengesCompleted')));
-    }, [level, currentExperience, challengesCompleted]);
+        updateLevel();
+    }, [level]);
+
+    useEffect(() => {
+        updateCurrentExperience();
+    }, [currentExperience]);
+
+    useEffect(() => {
+        updateChallengesCompleted();
+    }, [challengesCompleted]);
 
     function levelUp() {
         setLevel(level + 1);
-        localStorage.setItem('@Movimente-se/level', String(level + 1));
         setIsLevelUpModalOpen(true);
     }
 
@@ -107,18 +113,16 @@ export function ChallengesProvider({ children, ...rest }: ChallengesProviderProp
             levelUp();
         }
         setCurrentExperience(finalExperience);
-        localStorage.setItem('@Movimente-se/currentExperience', String(finalExperience));
         setActiveChallenge(null);
         setChallengesCompleted(challengesCompleted + 1);
-        localStorage.setItem('@Movimente-se/challengesCompleted', String(challengesCompleted + 1));
     }
 
     return (
         <ChallengesContext.Provider value={
             {
-                level, currentExperience, challengesCompleted,
+                userName, level, currentExperience, challengesCompleted,
                 levelUp, startNewChallenge, activeChallenge, resetChallenge,
-                experienceToNextLevel, completeChallenge, closeLevelUpModal, user
+                experienceToNextLevel, completeChallenge, closeLevelUpModal
             }}>
             {children}
 

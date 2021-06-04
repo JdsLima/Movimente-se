@@ -1,0 +1,93 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 992px;
+    padding: 1rem;
+    text-align: center;
+    justify-content: center;
+    margin: 1rem auto;
+    overflow-x: none;
+}
+
+.container header {
+    text-align: start;
+    margin-bottom: 3rem;
+}
+
+.container header button {
+    text-align: center;
+    font-size: 0;
+    background-color: transparent;
+    border: 0;
+}
+
+.presentation {
+    margin-bottom: 3rem;
+}
+
+.presentation img {
+    margin-bottom: 1rem;
+}
+
+
+.acknowledgment h2 {
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+.acknowledgment p {
+    width: 80%;
+    text-align: justify;
+    margin: 0 auto;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+    text-indent: 2rem;
+}
+
+.container footer {
+    margin-top: 3rem;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 80%;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    text-align: center;
+    justify-content: center;
+    border-top: 1px solid var(--secundary);
+}
+
+.wrapper img {
+    vertical-align: middle;
+    margin: 0 1rem 0 1rem;
+    width: 25px;
+    height: 25px;
+}
+
+.socialMedia {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem;
+    text-align: start;
+}
+
+.socialMedia i {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+.socialMedia div {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 540px) {
+    .wrapper {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+}

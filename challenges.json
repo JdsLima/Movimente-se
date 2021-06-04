@@ -16,6 +16,11 @@
   },
   {
     "type": "body",
+    "description": "Estique os braços para a frente. Deixe uma das mãos com os dedos para cima e, com a outra mão, faça força contra si para trazer os dedos para a frente. Repita isso para outra mão.",
+    "amount": 60
+  },
+  {
+    "type": "body",
     "description": "Com as duas mãos na parte de trás da cabeça, leve-a para baixo, alongando a parte de trás da região.",
     "amount": 60
   },
@@ -75,8 +80,18 @@
     "amount": 120
   },
   {
+    "type": "eye",
+    "description": "Primeiro, feche os olhos, respire e relaxe. Em seguida, abra um olho e volte a fechá-lo. Repita a mesma ação com o outro olho, de forma alternada.",
+    "amount": 60
+  },
+  {
     "type": "body",
     "description": "Tente pegar no pé da própria cadeira, alongando a lombar.",
     "amount": 70
+  },
+  {
+    "type": "body",
+    "description": "Sentado, levante uma perna até que ele fique linear e paralela ao solo. Mantenha a posição por alguns segundos, em seguida, baixe a perna. Repita 10-15 vezes, e mude para a outra perna.",
+    "amount": 150
   }
 ]

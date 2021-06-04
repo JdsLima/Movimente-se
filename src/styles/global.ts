@@ -1,7 +1,28 @@
+import { createGlobalStyle } from 'styled-components';
+
+export default createGlobalStyle`
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    --white:#fff;
+    --titlePrimary:${props => props.theme.colors.titlePrimary};
+    --background: ${props => props.theme.colors.background};
+    --secundary: ${props => props.theme.colors.secundary};
+    --gray-line:#dcdde0;
+    --text:${props => props.theme.colors.text};
+    --text-highlight:#b3b9ff;
+    --title:#89a2d6;
+    --red:#e83f5b;
+    --green:#4cd62b;
+    --blue:#5965e0;
+    --blue-dark:#4953b8;
+    --blue-twitter:${props => props.theme.colors.blueTwitter};
+    --blueLight: ${props => props.theme.colors.blueLight};
+    --lineBotton: ${props => props.theme.colors.lineBotton}
 }
 
 /* width */
@@ -54,5 +75,6 @@ button{
 a{
     color: inherit;
     text-decoration: none;
-    cursor: pointer;
 }
+
+`;

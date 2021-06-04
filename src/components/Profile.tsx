@@ -2,14 +2,18 @@ import { useContext } from 'react';
 import { ChallengesContext } from '../contexts/ChallengesContext';
 import styles from '../styles/components/Profile.module.css'
 
-export function Profile() {
-    const { level, user } = useContext(ChallengesContext);
+interface ProfileProps {
+    imgUrl: string
+}
+
+export function Profile(props: ProfileProps) {
+    const { level, user, userName } = useContext(ChallengesContext);
 
     return (
         <div className={styles.profileContainer}>
-            <img src={"https://github.com/" + user + ".png"} alt={user} />
+            <img draggable='false' src={props.imgUrl} alt={userName} />
             <div>
-                <strong>{user}</strong>
+                <strong>{userName}</strong>
                 <p>
                     <img src="icons/level.svg" alt="Level" />
                     level {level}
